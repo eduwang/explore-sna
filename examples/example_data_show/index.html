@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Display</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="csvFileInput" accept=".csv" />
+    <button onclick="handleFile()">Load CSV</button>
+    <table id="csvTable">
+        <thead>
+            <tr id="csvHeader"></tr>
+        </thead>
+        <tbody id="csvBody"></tbody>
+    </table>
+
+    <script>
+        function handleFile() {
+            const input = document.getElementById('csvFileInput');
+            const file = input.files[0];
+            if (file) {
+                Papa.parse(file, {
+                    header: true,
+                    dynamicTyping: true,
+                    complete: function(results) {
+                        displayTable(results.data);
+                    }
+                });
+            }
+        }
+
+        function displayTable(data) {
+            const csvHeader = document.getElementById('csvHeader');
+            const csvBody = document.getElementById('csvBody');
+
+            // Clear existing table data
+            csvHeader.innerHTML = '';
+            csvBody.innerHTML = '';
+
+            if (data.length > 0) {
+                // Create header row
+                const headers = Object.keys(data[0]);
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    csvHeader.appendChild(th);
+                });
+
+                // Create data rows
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    headers.forEach(header => {
+                        const td = document.createElement('td');
+                        td.textContent = row[header];
+                        tr.appendChild(td);
+                    });
+                    csvBody.appendChild(tr);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
