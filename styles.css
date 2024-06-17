@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    font-size: 2em;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-section {
+    width: 40%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-section {
+    width: 55%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1cm
+}
+
+#csvFileInput {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#csvDataDisplay {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#graphDisplay {
+    width: 100%;
+    height: 500px;
+}
