@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 필요한 라이브러리 불러오기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <!--  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Data and Graph Viewer</title>
+    <title>Social Network Analysis</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="1_dataViewer.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>CSV Data and Graph Viewer</h1>
+            <h1>Social Network Analysis - Graph Visualizer</h1>
         </header>
         <div class="main-content">
             <div class="left-section">
                 <input type="file" id="csvFileInput" accept=".csv" />
-                <div id="csvDataDisplay"></div>
+                <button onclick="handleFile()">Load CSV</button>
+                <div id="csvDataDisplay">
+                    <table id="csvTable">
+                        <thead>
+                            <tr id="csvHeader"></tr>
+                        </thead>
+                        <tbody id="csvBody"></tbody>
+                    </table>
+                </div>
             </div>
             <div class="right-section">
-                <div id="graphDisplay"></div>
+                <div id="graphDisplay">
+                    <div id="csvFileInput">Graph Visualizer</div>
+                    <button onclick="handleFile()">Draw a Graph!</button>
+                </div>
                 world
             </div>
         </div>
