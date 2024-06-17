@@ -37,7 +37,6 @@ function parseCSV(text) {
                 errorLoadingCsv.style.display = 'block'; // 에러 메시지를 보이게 설정
                 return;
             } else{
-                console.log("HI")
                 errorLoadingCsv.style.display = 'none';
             }
             // Filter out rows with any empty values
