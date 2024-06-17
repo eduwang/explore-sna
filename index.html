@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
     <!-- 필요한 라이브러리 불러오기 -->
+    <!-- <script type="importmap">
+        {
+            "imports": {
+                "graphology-layout-forceatlas2": "/node_modules/graphology-layout-forceatlas2/webworker.js",
+            }
+        }
+    </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.4.0/sigma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphology/0.25.4/graphology.umd.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/graphology-layout-forceatlas2@0.10.1/webworker.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sigma@2.4.0/build/sigma.min.js"></script> -->
     <!--  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Network Analysis</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="1_dataViewer.js"></script>
+    <!-- <script src="1_dataViewer.js"></script>
+    <script src="2_graphVisualizer.js"></script> -->
+
 </head>
 <body>
     <div class="container">
@@ -18,7 +31,11 @@
         <div class="main-content">
             <div class="left-section">
                 <input type="file" id="csvFileInput" accept=".csv" />
-                <button onclick="handleFile()">Load CSV</button>
+                <div>
+                    <button onclick="handleFile()">Load CSV</button>
+                    <p id="data-count"></p> 
+                    <p id="error-csv-message"></p>
+                </div>
                 <div id="csvDataDisplay">
                     <table id="csvTable">
                         <thead>
@@ -30,13 +47,13 @@
             </div>
             <div class="right-section">
                 <div id="graphDisplay">
-                    <div id="csvFileInput">Graph Visualizer</div>
-                    <button onclick="handleFile()">Draw a Graph!</button>
+                    <div id="sigma-container" style="height: 500px;"></div>
+                    <button id="drawGraphButton" >Draw a Graph!</button>
                 </div>
-                world
             </div>
         </div>
     </div>
-    <!-- <script src="script.js"></script> -->
+    <script src="1_dataViewer.js"></script>
+    <script type="module" src="2_graphVisualizer.js" defer></script>
 </body>
 </html>

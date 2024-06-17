@@ -29,10 +29,36 @@ function parseCSV(text) {
     Papa.parse(text, {
         header: true,
         dynamicTyping: true,
+        
         complete: function(results) {
-            displayTable(results.data);
+            const errorLoadingCsv = document.getElementById('error-csv-message');
+            if (!results.data[0] || results.data[0].Source1 === undefined || results.data[0].Source2 === undefined || results.data[0].Weight === undefined) {
+                errorLoadingCsv.textContent = "CSV file의 각 열제목은 Source1, Source2, Weight이어야 함";
+                errorLoadingCsv.style.display = 'block'; // 에러 메시지를 보이게 설정
+                return;
+            } else{
+                console.log("HI")
+                errorLoadingCsv.style.display = 'none';
+            }
+            // Filter out rows with any empty values
+            const filteredData = results.data.filter(row => {
+                return Object.values(row).every(value => value !== null && value !== '');
+            }).map((row, index) => ({
+                ID: index + 1,
+                Source1: row.Source1,
+                Source2: row.Source2,
+                Weight: row.Weight
+            }));
+            displayTable(filteredData);
+            displayDataCount(filteredData.length);
+            window.csvData = filteredData; // Store data globally for graph visualization
         }
     });
+}
+
+function displayDataCount(count) {
+    const dataCount = document.getElementById('data-count');
+    dataCount.textContent = '전체 데이터 수: ' + count + '개의 선분 데이터';
 }
 
 function displayTable(data) {

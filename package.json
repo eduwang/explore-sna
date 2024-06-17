@@ -9,12 +9,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    "start": "http-server ./examples/example_sigma_2"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "graphology": "^0.25.4",
-    "sigma": "^3.0.0-beta.19"
+    "graphology-layout-forceatlas2": "^0.10.1",
+    "sigma": "^2.4.0"
   }
 }
