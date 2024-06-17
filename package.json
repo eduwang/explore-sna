@@ -1,4 +1,18 @@
 {
+  "name": "explore-sna",
+  "version": "1.0.0",
+  "description": "sna vis",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server ./examples/example_sigma_2"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "graphology": "^0.25.4",
     "sigma": "^3.0.0-beta.19"

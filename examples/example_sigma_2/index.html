@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Visualizer_Practice</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.4.0/sigma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphology/0.25.4/graphology.umd.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/graphology-layout-forceatlas2@0.10.1/webworker.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script type="module" src="data_shower.js"></script>
+    <script type="module" src="sigma_visualizer.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif; /* 한글 폰트 설정 */
+        }
+        #table-container {
+            width: 70%;
+            height: 1000px;
+            overflow-y: auto;
+            margin-top: 1%;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 1%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        #data-count{
+          margin-top: 20px;
+          font-weight: bold;
+        }
+    </style>
+  </head>
+  <body style="background: lightgrey">
+    <div id="container" style="width: 800px; height: 600px; background: white"></div>
+    <div>
+      <input type="file" id="csvFileInput" accept=".csv" />
+      <button onclick="handleFile()">Load CSV</button>
+      <button onclick="handleFileforGraph()">Draw a Graph!</button>
+      <div id="data-count"></div>
+      <div id="table-container">
+        <table id="csvTable">
+          <thead>
+              <tr id="csvHeader"></tr>
+          </thead>
+          <tbody id="csvBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
