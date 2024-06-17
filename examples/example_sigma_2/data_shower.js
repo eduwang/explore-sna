@@ -13,14 +13,14 @@ function handleFile() {
     }
 }
 
-export function detectEncoding(buffer) {
+function detectEncoding(buffer) {
     // Placeholder function to detect encoding
     // You might use a library or custom logic to detect encoding more accurately
     // For the sake of example, let's assume the encoding is EUC-KR
     return 'euc-kr'; // Change this to the detected encoding if possible
 }
 
-export function decodeText(arrayBuffer, encoding) {
+function decodeText(arrayBuffer, encoding) {
     const decoder = new TextDecoder(encoding);
     return decoder.decode(new Uint8Array(arrayBuffer));
 }
