@@ -24,6 +24,9 @@ function decodeText(arrayBuffer, encoding) {
     const decoder = new TextDecoder(encoding);
     return decoder.decode(new Uint8Array(arrayBuffer));
 }
+const errorLoadingCsv = document.getElementById('error-csv-message');
+const tableDisplay = document.getElementById('csvDataDisplay');
+const dataCount = document.getElementById('data-count');
 
 function parseCSV(text) {
     Papa.parse(text, {
@@ -31,13 +34,17 @@ function parseCSV(text) {
         dynamicTyping: true,
         
         complete: function(results) {
-            const errorLoadingCsv = document.getElementById('error-csv-message');
             if (!results.data[0] || results.data[0].Source1 === undefined || results.data[0].Source2 === undefined || results.data[0].Weight === undefined) {
                 errorLoadingCsv.textContent = "CSV file의 각 열제목은 Source1, Source2, Weight이어야 함";
                 errorLoadingCsv.style.display = 'block'; // 에러 메시지를 보이게 설정
+                tableDisplay.style.display = 'none'
+                dataCount.style.display = 'none'
                 return;
             } else{
                 errorLoadingCsv.style.display = 'none';
+                tableDisplay.style.display = 'block'
+                dataCount.style.display = 'block'
+
             }
             // Filter out rows with any empty values
             const filteredData = results.data.filter(row => {
@@ -56,7 +63,6 @@ function parseCSV(text) {
 }
 
 function displayDataCount(count) {
-    const dataCount = document.getElementById('data-count');
     dataCount.textContent = '전체 데이터 수: ' + count + '개의 선분 데이터';
 }
 

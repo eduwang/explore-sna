@@ -14,7 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "graphology": "^0.25.4",
+    "graphology-components": "^1.5.4",
+    "graphology-layout": "^0.6.1",
     "graphology-layout-forceatlas2": "^0.10.1",
+    "papaparse": "^5.4.1",
     "sigma": "^2.4.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
   }
 }
